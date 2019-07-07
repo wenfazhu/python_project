@@ -3,11 +3,12 @@
 
 import mysql.connector
 
+#建表时注释下 ,database="test_db",当数据库存在test_db时需要指定database="test_db"
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    passwd="123456",
-    database="test_db"
+    passwd="123456"
+    ,database="test_db"
 )
 mycursor = mydb.cursor()
 
@@ -24,7 +25,7 @@ mycursor = mydb.cursor()
 # mycursor.execute("CREATE TABLE sites (name VARCHAR(255), url VARCHAR(255))")
 
 #给 sites 表添加主键id
-#mycursor.execute("ALTER TABLE sites ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")
+# mycursor.execute("ALTER TABLE sites ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")
 
 #设置sites表主键id自增,这一行代码的操作是前边两个的组合操作（创建表+设置主键自增id）
 # mycursor.execute("CREATE TABLE sites (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), url VARCHAR(255))")
@@ -42,7 +43,7 @@ mycursor = mydb.cursor()
 #     ('aaa', 'https://www.aaa.com'),
 #     ('bbb', 'https://www.bbb.com'),
 #     ('ccc', 'https://www.ccc.com'),
-#     ('ddd', 'https://www.ddd.com/')
+#     ('ddd', 'https://www.ddd.com')
 # ]
 # mycursor.executemany(sql, val)
 # mydb.commit()    # 数据表内容有更新，必须使用到该语句
@@ -56,7 +57,7 @@ mycursor = mydb.cursor()
 
 #为了防止数据库查询发生 SQL 注入的攻击，我们可以使用 %s 占位符来转义查询的条件：
 # sql = "SELECT * FROM sites WHERE name = %s"
-# na = ("Github", )
+# na = ("aaa", )
 # mycursor.execute(sql, na)
 # myresult = mycursor.fetchall()
 # for x in myresult:
@@ -77,9 +78,8 @@ mycursor = mydb.cursor()
 # # print(mycursor.rowcount, " 条记录删除")
 
 #数据表更新使用 "UPDATE" 语句：
-sql = "UPDATE sites SET name = %s WHERE name = %s"
-val = ("zwf", "zzz")
-mycursor.execute(sql, val)
-
-mydb.commit()
-print(mycursor.rowcount, " 条记录被修改")
+# sql = "UPDATE sites SET name = %s WHERE name = %s"
+# val = ("aaaaa", "aaa")
+# mycursor.execute(sql, val)
+# mydb.commit()
+# print(mycursor.rowcount, " 条记录被修改")
